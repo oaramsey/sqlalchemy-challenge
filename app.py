@@ -106,8 +106,6 @@ def stations():
         station_dictionary['elevation'] = elevation
         allstation.append(station_dictionary)
 
-    # print("\n======================\n")
-    # print(allstation)
         
     return jsonify(allstation)
 
@@ -122,6 +120,8 @@ def temperatureobserve():
     
     recent_date = session.query(measurement.date).\
             order_by(measurement.date.desc()).first()
+    
+    #last twelve months data
 
     last_twelve = (dt.datetime.strptime(recent_date[0], '%Y-%m-%d') - dt.timedelta(days=365))
 
